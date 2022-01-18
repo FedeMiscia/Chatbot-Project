@@ -1,59 +1,54 @@
 version: "3.0"
 
+config:
+    store_entities_as_slots: true
+session_config:
+    session_expiration_time: 60
+    carry_over_slots_to_new_session: true
+
 intents:
   - greet
   - goodbye
-  - affirm
+  - confirm
   - deny
   - mood_great
-  - mood_unhappy
   - bot_challenge
-  - geo-curiosity
-  - geo-joke
-  - find_info
+  - find_info_courses:
+        use_entities: true
+      
     
 
 entities:
-  - country
+  - corso
   
 slots:
-  country:
+  corso:
     type: text
     mappings:
     - type: from_entity
-      entity: country
+      entity: corso
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Ciao! Come posso esserti d'aiuto?"
 
   utter_cheer_up:
-  - text: "Here is something to cheer you up:"
+  - text: "Ecco qualcosa per sollevarti:"
     image: "https://i.imgur.com/nGF1K8f.jpg"
 
   utter_did_that_help:
-  - text: "Did that help you?"
+  - text: "Ti è stato d'aiuto?"
 
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "Fantastico, continua così!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Ciao!"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "Sono un bot creato in Rasa."
   
-  utter_geo-curiosity:
-  - text: "Bangok's full name is 163 letters long"
-  - text: "20% of oxygen is produced by the Amazon"
-  - text: "Iceland is growing 5 cm per year"
-  
-  utter_resp_geo-curiosity:
-  - text: "wow, amazing!"
-  
-  utter_geo-joke:
-  - text: "What's the coldest country? Chile!"
-  - text: "What's the fastest country? Rush-a"
+ 
 
 
 actions:
@@ -63,12 +58,9 @@ actions:
   - utter_happy
   - utter_goodbye
   - utter_iamabot
-  - utter_geo-curiosity
-  - utter_resp_geo-curiosity
-  - utter_geo-joke
-  - action_find_info
+  - action_find_info_courses
+
+forms: {}
+e2e_actions: []
 
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true

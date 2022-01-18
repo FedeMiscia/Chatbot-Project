@@ -5,43 +5,49 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 
-# This is a simple example for a custom action which utters "Hello World!"
 
+import pandas as pd
+import json
+from pathlib import Path
 from typing import Any, Text, Dict, List
+import requests
+from rasa_sdk.events import SlotSet
+from rasa_sdk.events import FollowupAction
+
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-import requests
-import json
+from rasa_sdk.knowledge_base.storage import InMemoryKnowledgeBase
+from rasa_sdk.knowledge_base.actions import ActionQueryKnowledgeBase
+from rasa_sdk.events import SlotSet
 
-class ActionFindInfo(Action):
+
+
+class ActionFindInfoCourses(Action):
 
     def name(self) -> Text:
-        return "action_find_info"
+        return "action_find_info_courses"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        name = str(tracker.get_slot('country')) #Prendiamo lo slot 'country'
-        r = requests.get(url='https://restcountries.com/v3.1/name/{}'.format(name.lower())) #Si prende le richiesta tramite l'url (nell'url aggiungiamo lo slot)
+        name = str(tracker.get_slot('corso')).lower() #Nome dello slot da prendere: corso
+        corsi = pd.read_excel('../datasets/Corsi.xlsx')
+        corsi['Nome'] = corsi['Nome'].str.lower() #Nomi corsi tutti in minuscolo per evitare incongruenze con l'entity
         
-        output=''
-        # 200 è il codice che dice che è andato tutto bene
-        if r.status_code == 200:
-            data = r.json() #memorizziamo il json della richiesta
-            
-            # prendiamo dal json le informazioni che ci servono, effettuiamo il parsing
-            flag = list(data[0]['flags'].values())[0]
-            capital = list(data[0]['capital'])[0]
-            moneta = list(data[0]['currencies'].values())[0]['name']
-            area = data[0]['area']
-            subregion = data[0]['subregion']
-            output = '{} is a state located in {}, the area is {}, the capital is {}, the currency is {} and you can see the flag at this link {}'
-        
-        else: 
-            output = 'something went wrong'
-            
-        dispatcher.utter_message(text=output)
+        selections = []
 
+        # Creo una lista  con tutti i corsi il cui nome contiene il nome inserito dall'utente
+        for index, row in corsi.iterrows():
+            if name in row['Nome']:
+                selections.append([row['Nome'],row['Descrizione']])
+                
+        
+        if len(selections) == 1:
+            output = str(selections[0][1])
+        else:
+            # print("Intendevi una delle seguenti?\n")
+            #     for selection in selections:
+            #         print('- '+selection[0]+"\n")
+            output = "Non riesco a trovare un risultato, sei sicur* di aver scritto bene?"
             
-        return []
+        dispatcher.utter_message(text=output)            
+        return [FollowupAction("utter_did_that_help")]

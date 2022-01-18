@@ -11,3 +11,9 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+  
+- rule: start anytime the user says ciao
+  steps:
+  - intent: greet
+  - action: utter_greet
+

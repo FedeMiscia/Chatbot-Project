@@ -1,0 +1,60 @@
+nlu:
+  - lookup: corso
+    examples: |
+      - algebra e logica
+      - algebra lineare e geometria
+      - analisi complessa
+      - analisi matematica i
+      - analisi matematica ii
+      - analisi numerica
+      - automazione industriale
+      - calcolatori elettronici e reti di calcolatori
+      - calcolo delle probabilità e statistica matematica
+      - controlli automatici
+      - economia dell'impresa
+      - elementi di elettronica
+      - elettromagnetismo per la trasmissione dell'informazione
+      - elettrotecnica
+      - fisica generale i
+      - fisica generale ii
+      - fondamenti di automatica
+      - fondamenti di informatica
+      - ingegneria del software
+      - laboratorio di automazione
+      - meccanica razionale
+      - metodi e tecniche per l'automazione
+      - modellistica e identificazione dei processi dinamici
+      - progettazione assistita da calcolatore dei sistemi di controllo
+      - programmazione ad oggetti
+      - programmazione mobile
+      - ricerca operativa
+      - sistemi informativi e basi di dati
+      - sistemi operativi
+      - tecnologie per l'automazione e la robotica
+      - tecnologie per le telecomunicazioni
+      - tecnologie web
+      - advanced cybersecurity for it
+      - azionamenti per l'automazione e la robotica
+      - big data analytics e machine learning
+      - computer graphics e multimedia
+      - computer vision e deep learning
+      - controllo non lineare
+      - cybersecurity for networks
+      - data science
+      - digital adaptive circuits and learning systems
+      - dynamics and control of intelligent robots and vehicles
+      - fisica moderna per l'ingegneria
+      - intelligenza artificiale
+      - laboratorio di meccatronica
+      - linguaggi di programmazione
+      - manutenzione preventiva per la robotica e l'automazione intelligente
+      - meccanica delle macchine automatiche
+      - new generation databases
+      - organizzazione dell'impresa
+      - progettazione dei sistemi di controllo
+      - programmazione avanzata
+      - project management per l'ict
+      - ricerca operativa 2
+      - sistemi di automazione
+      - sistemi operativi dedicati
+      - software cybersecurity    
