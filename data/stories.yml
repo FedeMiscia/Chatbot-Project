@@ -2,6 +2,35 @@ version: "3.0"
 
 stories:
 
+- story: find_info_faculties path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_info_faculties
+    entities:
+    - facolta: ingegneria
+  - action: action_find_info_faculties
+  
+- story: find_studies path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_studies
+  - action: utter_find_studies
+
+- story: find_info_addresses path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_info_addresses
+  - action: find_info_addresses_form
+  - active_loop: find_info_addresses_form
+  - slot_was_set:
+    - requested_slot: laurea
+  - slot_was_set:
+    - requested_slot: indirizzo
+  - active_loop: null
+  - action: action_find_info_addresses
 
 - story: find_info_courses path
   steps:
@@ -11,7 +40,8 @@ stories:
     entities:
     - corso: elettrotecnica
   - action: action_find_info_courses
- 
 
-  
-  
+- story: joke path
+  steps:
+  - intent: joke
+  - action: utter_joke

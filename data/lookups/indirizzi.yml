@@ -1,0 +1,54 @@
+nlu:
+  - lookup: indirizzo
+    examples: |
+      - scienze e tecnologie agrarie
+      - scienze e tecnologie alimentari
+      - scienze forestali ed ambientali
+      - sistemi agricoli innovativi
+      - scienze agrarie e del territorio
+      - food and beverage innovation and management
+      - scienze forestali, dei suoli e del paesaggio
+      - economia e commercio
+      - economia aziendale
+      - economia e management
+      - international economics and commerce
+      - management pubblico e dei sistemi socio-sanitari
+      - scienze economiche e finanziarie
+      - data scienze per l'economia e le imprese
+      - management della sostenibilita ed economia circolare
+      - ingegneria civile e ambientale
+      - ingegneria biomedica
+      - ingegneria elettronica
+      - ingegneria informatica e dell'automazione
+      - ingegneria meccanica
+      - ingegneria edile
+      - ingegneria gestionale
+      - tecniche della costruzione e gestione del territorio
+      - sistemi industriali e dell'informazione
+      - ingegneria civile
+      - biomedical engineering
+      - environmental engineering
+      - ingegneria edile-architettura
+      - medicina e chirurgia
+      - odontoiatria e protesi dentaria
+      - assistenza sanitaria
+      - infermieristica
+      - ostetricia
+      - educazione professionale
+      - fisioterapia
+      - logopedia
+      - dietistica
+      - tecniche di radiologia medica, per immagini e radioterapia
+      - tecniche di laboratorio biomedico
+      - igiene dentale
+      - tecniche della prevenzione nell'ambiente e nei luoghi di lavoro
+      - terapia della neuro e psicomotricita dell'eta evolutiva
+      - scienze infermieristiche ed ostetriche
+      - scienze delle professioni sanitarie tecniche assistenziali
+      - scienze delle professioni sanitarie teniche diagnostiche
+      - scienze riabilititative delle professioni sanitarie
+      - scienze biologiche
+      - scienze ambientali e protezione civile
+      - biologia molecolare e applicata
+      - biologia marina
+      - rischio ambientale e protezione civile

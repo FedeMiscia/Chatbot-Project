@@ -16,6 +16,12 @@ nlu:
     - iniziamo
     
 
+- intent: start
+  examples: |
+    - start
+    - begin
+    - init
+    - inizia
 
 - intent: goodbye
   examples: |
@@ -74,14 +80,103 @@ nlu:
     
 - intent: find_info_courses
   examples: |
-    - puoi darmi informazioni su [analisi matematica I](corso)?
+    - puoi darmi informazioni su [analisi matematica 1](corso)?
     - vorrei avere informazioni sul corso [elettrotecnica](corso)
     - vorrei avere informazioni su [linguaggi di programmazione](corso)
     - dimmi qualcosa su [data science](corso)
-    - dammi informazioni su [software cybersecurity](corso)
+    - dammi informazioni su [fisica](corso)
     - ho bisogno di informazioni riguardo [controlli automatici](corso)
-    - avrei bisogno di info riguardo [meccanica razionale](corso)
+    - avrei bisogno di info riguardo [fisica generale 2](corso)
     - vorrei sapere qualcosa sul corso [programmazione mobile](corso)
+
+- intent: find_info_faculties
+  examples: |
+    - puoi darmi informazioni su [ingegneria](facolta)?
+    - vorrei avere informazioni su [agraria](facolta)
+    - quali sono i corsi di laurea di [medicina e chirurgia](facolta)?
+    - dimmi quali sono i corsi di laurea di [scienze](facolta)
+
+- intent: find_studies
+  examples: |
+    - cosa posso studiare all'UNIVPM?
+    - dimmi che cosa si studia all'UNIVPM
+    - quali sono le facolta in cui posso studiare?
+
+- intent: find_info_addresses
+  examples: |
+    - vorrei informazioni su un corso di laurea
+    - posso avere informazioni su un corso di laurea?
+#    - posso avere informazioni sul corso di laurea in [ingegneria informatica e dell'automazione](indirizzo)?
+#    - vorrei informazioni sul corso di laurea in [economia e commercio](indirizzo)
+
+#- intent: find_info_addresses_details
+#  examples: |
+#    - [triennale](laurea) [ingegneria meccanica](indirizzo)
+#    - [magistrale](laurea), [ingegneria informatica e dell'automazione](indirizzo)
+#    - [economia e commercio](indirizzo)
+- intent: find_info_aula
+  examples: |
+    - dove si trova l'aula [145/1](aula)
+    - a che piano è la [155/10](aula)    
+    - a che piano è l'aula [a9/a10](aula)
+    - dove trovo l'aula [en1](aula)
+    - dove trovo una [sala studio](aula)
+    - a che piano è il [salone polifunzionale](aula)
+    - dove sta il [salone polifunzionale](aula)
+    - dove si trova la [biblioteca](aula)
+    - dove si trova il [bar](aula)
+    - a che piano è il [bar](aula)
+    - dove si trova l'[aula magna](aula)
+    - a che piano è l'[aula magna](aula)
+    - dove si trova il [cesmi2](aula)
+    - dove si trova l'aula [b9](aula)
+    - dove trovo l'aula [b9](aula)
+    - dove si trova l'aula [b7/b8](aula)
+
+- intent: find_tasse
+  examples: |
+    - quando scadono le [tasse](tax)
+    - puoi dirmi la [scadenza](tax) delle tasse
+    - quando scade la prima rata[tax]
+    - quando bisogna pagare le rate[tax]
+    - quanto vale la prima rata[tax]
+    - quando scade la prima [tassa] universitaria
+    - quando scade la seconda [tassa] universitaria
+
+- intent: joke
+  examples: |
+    - quando mi laureo?
+    - quando finirò gli esami?
+    - quando ci sarà la mia laurea?
+    
+    
+- intent: request_lista_corsi
+  examples: |
+    - quali corsi devo frequentare?
+    - che corsi sono previsti per Ingegneria Informatica?
+    - quali corsi devo seguire?
+    - che corsi ci sono?
+    - vorrei sapere che corsi dovrò seguire
+    
+- intent: change_request
+  examples: |
+    - non mi interessa più
+    - voglio sapere altro
+    - vorrei fare un'altra domanda
+    - ricominciamo
+    - voglio cambiare domanda
+
+- intent: stop_request
+  examples: |
+    - basta
+    - niente
+    - ho finito
+    - non ho più niente da chiedere
+    - non voglio sapere più niente
+
+- synonym: aula
+  examples: |
+    - classe
 
 - synonym: corso  
   examples: |

@@ -1,0 +1,6 @@
+nlu:
+  - lookup: laurea
+    examples: |
+      - triennale
+      - magistrale
+      

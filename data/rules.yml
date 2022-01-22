@@ -2,9 +2,19 @@ version: "3.0"
 
 rules:
 
+- rule: Start conversation
+  steps:
+  - intent: start
+  - action: utter_start
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say goodbye anytime the user wants to stop
+  steps:
+  - intent: stop_request
   - action: utter_goodbye
 
 - rule: Say 'I am a bot' anytime the user challenges
@@ -17,3 +27,72 @@ rules:
   - intent: greet
   - action: utter_greet
 
+- rule: Restituisce informazioni dei corsi
+  steps:
+  - intent: find_info_courses
+  - action: action_find_info_courses
+
+- rule: Restituisce informazioni delle facolta
+  steps:
+  - intent: find_info_faculties
+  - action: action_find_info_faculties
+
+#- rule: Restituisce informazioni sui singoli corsi di laurea
+#  steps:
+#  - intent: find_info_addresses
+#  - action: action_find_info_addresses
+
+- rule: Activate form corsi
+  steps:
+  - intent: find_info_addresses
+  - action: find_info_addresses_form
+  - active_loop: find_info_addresses_form
+
+- rule: Submit form corsi
+  condition:
+  - active_loop: find_info_addresses_form
+  steps:
+  - action: find_info_addresses_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_find_info_addresses
+
+- rule: Restituisce informazioni sulle aule
+  steps:
+  - intent: find_info_aula
+  - action: action_find_info_aula
+
+- rule: Restituisce informazioni sulle tasse
+  steps:
+  - intent: find_tasse
+  - action: utter_response_tax
+  - action: utter_more_tax_info
+
+- rule: Activate form piano studi
+  steps:
+  - intent: request_lista_corsi
+  - action: utter_richiesta_info
+  - action: lista_corsi_form
+  - active_loop: lista_corsi_form
+  
+- rule: Submit form piano studi
+  condition:
+  - active_loop: lista_corsi_form
+  steps:
+  - action: lista_corsi_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_courses_list
+  
+- rule: Changing question rule
+  steps:
+  - intent: change_request
+  - action: utter_change_request
+  - action: action_change_request
+  
+- rule: Following action after list courses
+  steps:
+  - action: utter_list_courses_type
+  - action: utter_another_question

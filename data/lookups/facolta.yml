@@ -1,0 +1,9 @@
+nlu:
+  - lookup: facolta
+    examples: |
+      - agraria
+      - ingegneria
+      - economia
+      - medicina e chirurgia
+      - scienze
+      

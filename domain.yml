@@ -13,13 +13,30 @@ intents:
   - deny
   - mood_great
   - bot_challenge
+  - find_studies
+  - stop_request
+  - change_request
   - find_info_courses:
         use_entities: true
-      
-    
+  - find_info_faculties:
+        use_entities: true
+  - find_info_addresses
+        #use_entities: true
+  - find_info_aula:
+        use_entities: true
+  - find_tasse:
+        use_entities: true
+  - request_lista_corsi
+  - joke
+  - start
 
 entities:
   - corso
+  - facolta
+  - laurea
+  - indirizzo
+  - aula
+  - tax
   
 slots:
   corso:
@@ -27,8 +44,63 @@ slots:
     mappings:
     - type: from_entity
       entity: corso
+  facolta:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: facolta
+  laurea:
+    type: text
+    mappings:
+    - type: from_text
+      #entity: laurea
+      conditions:
+      - active_loop: find_info_addresses_form
+        requested_slot: laurea
+  laurea_2:
+    type: text 
+    mappings: 
+    - type: from_text
+      conditions: 
+      - active_loop: lista_corsi_form
+        requested_slot: laurea_2 
+  indirizzo:
+    type: text
+    mappings:
+    - type: from_text
+      #entity: indirizzo
+      conditions:
+      - active_loop: find_info_addresses_form
+        requested_slot: indirizzo
+  aula:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: aula
+  tax:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: tax    
+  anno:
+    type: text 
+    mappings: 
+    - type: from_text
+      conditions: 
+      - active_loop: lista_corsi_form
+        requested_slot: anno
+  semestre:
+    type: text 
+    mappings: 
+    - type: from_text
+      conditions: 
+      - active_loop: lista_corsi_form
+        requested_slot: semestre
 
 responses:
+  utter_start:
+  - text: Benvenuto studente, sono UNIVPMBot, sono stato creato per togliere dubbi riguardo l'università. \n Ti posso aiutare sulle facoltà, sui corsi di laurea e sul piano di studi che hai intenzione di scegliere. Inoltre, se hai dubbi riguardo delle tasse universitarie o sulla posizione delle aule chiedi pure.
+
   utter_greet:
   - text: "Ciao! Come posso esserti d'aiuto?"
 
@@ -44,12 +116,72 @@ responses:
 
   utter_goodbye:
   - text: "Ciao!"
+  - text: "Alla prossima!"
+  - text: "Se hai altre domande, scrivimi quando vuoi"
 
   utter_iamabot:
   - text: "Sono un bot creato in Rasa."
-  
- 
 
+  utter_joke:
+  - text: "Sei ancora qui? Vai a studiare!"
+
+  utter_find_studies:
+  - text: Presso l'Università Politecnica delle Marche ci sono ben cinque facolta ':' AGRARIA, INGENGERIA, ECONOMIA, MEDICINA E CHIRURGIA e SCIENZE. Se vuoi maggiori informazioni sui singoli corsi di laurea, fammi pure altre domande.
+ 
+  utter_submit:
+  - text: "Ok. Submit"
+
+  utter_slots_values:
+  - text: "Laurea: {laurea}, Corso: {indirizzo}"
+
+  utter_ask_laurea:
+    - text: "Qual è la tipologia di laurea? "
+  
+  utter_ask_indirizzo:
+    - text: "Qual è il nome del corso? "
+
+  utter_more_info:
+  - text: "Per maggiori informazioni rivolgiti alla segreteria a quota 160"
+
+  utter_response_tax:
+  - text: |-
+           1. L’importo della 1a rata è di € 156,00 (di cui € 140,00 di tassa regionale per il diritto allo studio e € 16,00 di imposta di bollo);
+           La 1a rata deve essere corrisposta all’atto dell’immatricolazione (o iscrizione ad anni successivi al primo) entro il termine del 5 novembre. 
+           Per i corsi ad accesso programmato la 1a rata va corrisposta nei termini indicati nei singoli bandi.
+
+           2. Gli importi della 2a e 3a rata sono definiti sulla base del contributo annuale determinato in base al corso di studio di afferenza e all’ISEE per il diritto allo studio 
+           universitario, che viene acquisito esclusivamente tramite il consenso reso online nella propria area riservata di Esse3 Web - Home Dati Anagrafici - Consensi
+  utter_more_tax_info:
+  - text: "Per maggiori informazioni visita la pagina: [tasse e contributi](https://www.univpm.it/Entra/Servizi_agli_studenti/FAQ_come_fare_per/Tasse_e_contributi)"
+  
+  utter_change_request:
+  - text: "Ok, cosa vuoi sapere?"
+  - text: "Va bene, come posso esserti d'aiuto allora?"
+  
+  utter_richiesta_info:
+  - text: "Per poterti rispondere ho bisogno di alcune informazioni. Iniziamo!"
+  - text: "Permettimi qualche domanda per capire meglio"
+  
+  utter_ask_lista_corsi_form_laurea_2:
+  - text: "Che corsi ti interessano? (Triennale/Magistrale)"
+  - text: "Triennale o magistrale?"
+  
+  utter_ask_lista_corsi_form_anno:
+  - text: "In che anno? (Inserisci un numero da 1 a 3)"
+  - text: "Quale anno? (Inserisci un numero da 1 a 3)"
+  
+  utter_ask_lista_corsi_form_semestre:
+  - text: "Quale semestre? (I, II)"
+  
+  
+  utter_list_courses_type:
+  - text: "(O) indica che il corso è obbligatorio, (S) che è a scelta"
+  
+  utter_another_question:
+  - text: "Che altro vuoi sapere?"
+  - text: "Chiedimi qualcos'altro"
+  - text: "Puoi chiedermi altro, se vuoi"
+  - text: "Fammi un'altra domanda"
 
 actions:
   - utter_greet
@@ -58,9 +190,30 @@ actions:
   - utter_happy
   - utter_goodbye
   - utter_iamabot
+  - utter_find_studies
   - action_find_info_courses
+  - action_find_info_faculties
+  - action_find_info_addresses
+  - utter_submit
+  - utter_slots_values
+  - action_find_info_aula
+  - utter_joke
+  - utter_list_courses_type
+  - action_courses_list
+  - utter_richiesta_info
+  - action_change_request
 
-forms: {}
+forms:
+  find_info_addresses_form:
+    required_slots:
+      - laurea
+      - indirizzo
+  lista_corsi_form:
+    required_slots:
+        - laurea_2
+        - anno
+        - semestre
+
 e2e_actions: []
 
 

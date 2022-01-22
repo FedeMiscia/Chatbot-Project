@@ -1,11 +1,12 @@
+version: "3.0"
 nlu:
   - lookup: corso
     examples: |
       - algebra e logica
       - algebra lineare e geometria
       - analisi complessa
-      - analisi matematica i
-      - analisi matematica ii
+      - analisi matematica 1
+      - analisi matematica 2
       - analisi numerica
       - automazione industriale
       - calcolatori elettronici e reti di calcolatori
@@ -15,8 +16,8 @@ nlu:
       - elementi di elettronica
       - elettromagnetismo per la trasmissione dell'informazione
       - elettrotecnica
-      - fisica generale i
-      - fisica generale ii
+      - fisica generale 1
+      - fisica generale 2
       - fondamenti di automatica
       - fondamenti di informatica
       - ingegneria del software

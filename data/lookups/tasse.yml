@@ -1,0 +1,10 @@
+nlu:
+  - lookup: tax
+    examples: |
+      - tasse
+      - scadenze
+      - contributi
+      - rate
+      - rata
+      - scadenza
+      - tassa

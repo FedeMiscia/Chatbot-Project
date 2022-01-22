@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-corso",
+      "2": "I-corso",
+      "3": "L-corso",
+      "4": "U-corso",
+      "5": "B-facolta",
+      "6": "I-facolta",
+      "7": "L-facolta",
+      "8": "U-facolta",
+      "9": "B-indirizzo",
+      "10": "I-indirizzo",
+      "11": "L-indirizzo",
+      "12": "U-indirizzo",
+      "13": "B-laurea",
+      "14": "I-laurea",
+      "15": "L-laurea",
+      "16": "U-laurea",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-corso": 1,
+      "I-corso": 2,
+      "L-corso": 3,
+      "U-corso": 4,
+      "B-facolta": 5,
+      "I-facolta": 6,
+      "L-facolta": 7,
+      "U-facolta": 8,
+      "B-indirizzo": 9,
+      "I-indirizzo": 10,
+      "L-indirizzo": 11,
+      "U-indirizzo": 12,
+      "B-laurea": 13,
+      "I-laurea": 14,
+      "L-laurea": 15,
+      "U-laurea": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]

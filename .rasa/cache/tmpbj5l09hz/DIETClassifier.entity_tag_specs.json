@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-corso",
+      "2": "I-corso",
+      "3": "L-corso",
+      "4": "U-corso",
+      "5": "B-facolta",
+      "6": "I-facolta",
+      "7": "L-facolta",
+      "8": "U-facolta",
+      "9": "B-indirizzo",
+      "10": "I-indirizzo",
+      "11": "L-indirizzo",
+      "12": "U-indirizzo",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-corso": 1,
+      "I-corso": 2,
+      "L-corso": 3,
+      "U-corso": 4,
+      "B-facolta": 5,
+      "I-facolta": 6,
+      "L-facolta": 7,
+      "U-facolta": 8,
+      "B-indirizzo": 9,
+      "I-indirizzo": 10,
+      "L-indirizzo": 11,
+      "U-indirizzo": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

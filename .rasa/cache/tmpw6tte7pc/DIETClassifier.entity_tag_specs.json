@@ -1,0 +1,44 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-aula",
+      "2": "I-aula",
+      "3": "L-aula",
+      "4": "U-aula",
+      "5": "B-corso",
+      "6": "I-corso",
+      "7": "L-corso",
+      "8": "U-corso",
+      "9": "B-facolta",
+      "10": "I-facolta",
+      "11": "L-facolta",
+      "12": "U-facolta",
+      "13": "B-tax",
+      "14": "I-tax",
+      "15": "L-tax",
+      "16": "U-tax",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-aula": 1,
+      "I-aula": 2,
+      "L-aula": 3,
+      "U-aula": 4,
+      "B-corso": 5,
+      "I-corso": 6,
+      "L-corso": 7,
+      "U-corso": 8,
+      "B-facolta": 9,
+      "I-facolta": 10,
+      "L-facolta": 11,
+      "U-facolta": 12,
+      "B-tax": 13,
+      "I-tax": 14,
+      "L-tax": 15,
+      "U-tax": 16,
+      "O": 0
+    },
+    "num_tags": 17
+  }
+]

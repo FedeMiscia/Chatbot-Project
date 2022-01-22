@@ -1,0 +1,7 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "lista_corsi_form",
+    "find_info_addresses_form"
+  ]
+}
