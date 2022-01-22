@@ -106,14 +106,7 @@ nlu:
   examples: |
     - vorrei informazioni su un corso di laurea
     - posso avere informazioni su un corso di laurea?
-#    - posso avere informazioni sul corso di laurea in [ingegneria informatica e dell'automazione](indirizzo)?
-#    - vorrei informazioni sul corso di laurea in [economia e commercio](indirizzo)
 
-#- intent: find_info_addresses_details
-#  examples: |
-#    - [triennale](laurea) [ingegneria meccanica](indirizzo)
-#    - [magistrale](laurea), [ingegneria informatica e dell'automazione](indirizzo)
-#    - [economia e commercio](indirizzo)
 - intent: find_info_aula
   examples: |
     - dove si trova l'aula [145/1](aula)

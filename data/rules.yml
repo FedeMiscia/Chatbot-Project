@@ -7,6 +7,11 @@ rules:
   - intent: start
   - action: utter_start
 
+- rule: Chiede all'utente di riformulare la frase ogni volta che c'è un livello di confidenza più basso di una soglia
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -36,11 +41,6 @@ rules:
   steps:
   - intent: find_info_faculties
   - action: action_find_info_faculties
-
-#- rule: Restituisce informazioni sui singoli corsi di laurea
-#  steps:
-#  - intent: find_info_addresses
-#  - action: action_find_info_addresses
 
 - rule: Activate form corsi
   steps:

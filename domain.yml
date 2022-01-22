@@ -21,7 +21,6 @@ intents:
   - find_info_faculties:
         use_entities: true
   - find_info_addresses
-        #use_entities: true
   - find_info_aula:
         use_entities: true
   - find_tasse:
@@ -53,7 +52,6 @@ slots:
     type: text
     mappings:
     - type: from_text
-      #entity: laurea
       conditions:
       - active_loop: find_info_addresses_form
         requested_slot: laurea
@@ -68,7 +66,6 @@ slots:
     type: text
     mappings:
     - type: from_text
-      #entity: indirizzo
       conditions:
       - active_loop: find_info_addresses_form
         requested_slot: indirizzo
@@ -99,7 +96,7 @@ slots:
 
 responses:
   utter_start:
-  - text: Benvenuto studente, sono UNIVPMBot, sono stato creato per togliere dubbi riguardo l'università. \n Ti posso aiutare sulle facoltà, sui corsi di laurea e sul piano di studi che hai intenzione di scegliere. Inoltre, se hai dubbi riguardo delle tasse universitarie o sulla posizione delle aule chiedi pure.
+  - text: "Benvenuto studente, sono UNIVPMBot, sono stato creato per togliere dubbi riguardo l'università. \n Ti posso aiutare sulle facoltà, sui corsi di laurea e sul piano di studi che hai intenzione di scegliere. Inoltre, se hai dubbi riguardo delle tasse universitarie o sulla posizione delle aule chiedi pure."
 
   utter_greet:
   - text: "Ciao! Come posso esserti d'aiuto?"
@@ -126,7 +123,7 @@ responses:
   - text: "Sei ancora qui? Vai a studiare!"
 
   utter_find_studies:
-  - text: Presso l'Università Politecnica delle Marche ci sono ben cinque facolta ':' AGRARIA, INGENGERIA, ECONOMIA, MEDICINA E CHIRURGIA e SCIENZE. Se vuoi maggiori informazioni sui singoli corsi di laurea, fammi pure altre domande.
+  - text: "Presso l'Università Politecnica delle Marche ci sono ben cinque facolta: AGRARIA, INGENGERIA, ECONOMIA, MEDICINA E CHIRURGIA e SCIENZE. Se vuoi maggiori informazioni sui singoli corsi di laurea, fammi pure altre domande."
  
   utter_submit:
   - text: "Ok. Submit"
@@ -182,6 +179,9 @@ responses:
   - text: "Chiedimi qualcos'altro"
   - text: "Puoi chiedermi altro, se vuoi"
   - text: "Fammi un'altra domanda"
+
+  utter_please_rephrase:
+  - text: "Mi dispiace, ma non ho capito. Puoi ripetere la richiesta?"
 
 actions:
   - utter_greet

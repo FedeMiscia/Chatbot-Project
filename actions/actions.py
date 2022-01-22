@@ -90,24 +90,24 @@ class ActionFindInfoFaculties(Action):
         
         #Creazione dell'output
         output = "Presso la facoltà di {name} vengono erogati i seguenti corsi di laurea:\n".format(name=name)
-        output = output +"\033[1m"+'-- TRIENNALE --\n\n'+ "\033[0m"
+        output = output +'-- TRIENNALE --\n\n'
         for row in triennale:
             listToStr = ' ('.join([str(elem) for elem in row[2:4]])+')'
             output = output + '\t- ' + listToStr +'\n' 
 
-        output = output + "\033[1m"+'\n\n-- MAGISTRALE --\n\n'+ "\033[0m"
+        output = output + '\n\n-- MAGISTRALE --\n\n'
         for row in magistrale:
             listToStr = ' ('.join([str(elem) for elem in row[2:4]])+')'
             output = output + '\t- ' + listToStr +'\n' 
 
         if len(magistrale_cu) > 0:
-            output = output + "\033[1m"+'\n\n-- MAGISTRALE A CICLO UNICO --\n\n'+ "\033[0m"
+            output = output +'\n\n-- MAGISTRALE A CICLO UNICO --\n\n'
             for row in magistrale_cu:
                 listToStr = ' ('.join([str(elem) for elem in row[2:4]])+')'
                 output = output + '\t- ' + listToStr +'\n' 
 
         if len(orientamento_professionale) > 0:
-            output = output + "\033[1m"+'\n\n-- ORIENTAMENTO PROFESSIONALE --\n\n'+ "\033[0m"
+            output = output + '\n\n-- ORIENTAMENTO PROFESSIONALE --\n\n'
             for row in orientamento_professionale:
                 listToStr = ' ('.join([str(elem) for elem in row[2:4]])+')'
                 output = output + '\t- ' + listToStr +'\n' 
@@ -122,44 +122,23 @@ class ActionFindInfoAddresses(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        laurea = tracker.get_slot('laurea') #Nome dello slot da prendere: laurea
+        laurea = str(tracker.get_slot('laurea')).lower() #Nome dello slot da prendere: laurea
         name = str(tracker.get_slot('indirizzo')).lower() #Nome dello slot da prendere: indirizzo
-
-        print("laurea: ", laurea)
-        print("corso: ", name)
 
         facolta = pd.read_csv('datasets/Facolta_Dipartimento.csv', encoding="UTF-8", sep=";")
         facolta['Nome'] = facolta['Nome'].str.lower()
         facolta = facolta[facolta["Nome"] == name.lower()]
-        selected_facolta = facolta[facolta["Laurea"].str.lower() == laurea.lower()]
+        selected_facolta = facolta[facolta["Laurea"].str.lower() == laurea]
 
-        if (len(facolta) == 0):
-            output = "Non riesco a trovare un risultato, sei sicur* di aver scritto bene?"
+        if(len(facolta) == 0):
+            output = "Il corso di laurea che hai inserito non esiste nella nostra università"
+        elif (laurea not in ["triennale", "magistrale"]):
+            output = "Attenzione, hai inserito una tipologia di laurea che non esiste."
+        elif (len(selected_facolta) == 0):
+            output = "Non riesco a trovare un risultato, sei sicur* di aver scritto bene?" 
         else:
-            #output = "\033[1m"+'-- {name} '.format(name=name.upper())+ '('+ selected_facolta["Classe"].to_list()[0]+') --\n\n'+ "\033[0m"
             descrizione = selected_facolta["Descrizione"].to_list()
-            print(descrizione)
             output = str(descrizione[0])
-
-        """
-        if (not laurea): #Caso in cui non si specifica la tipologia di laurea
-            if len(facolta) == 0:
-                output = "Non riesco a trovare un risultato, sei sicur* di aver scritto bene?"
-            elif len(facolta) == 2:
-                output = "Il corso che hai scelto è presente sia nella laurea triennale che magistrale con lo stesso nome. Formula la richiesta in modo più preciso."
-            else:
-                output = "\033[1m"+'-- {name} '.format(name=name.upper())+ '('+ facolta["Classe"].to_list()[0]+') --\n\n'+ "\033[0m"
-                descrizione = facolta["Descrizione"].to_list()
-                output = output + str(descrizione[0])
-        else:   #Caso in cui il corso di laurea ha un nome univoco
-            if len(facolta) == 0:
-                output = "Non riesco a trovare un risultato, sei sicur* di aver scritto bene?"
-            else:
-                facolta = facolta[facolta["Laurea"].str.lower()==str(laurea).lower()]
-                output = "\033[1m"+'-- {name} '.format(name=name.upper())+ '('+ facolta["Classe"].to_list()[0]+') --\n\n'+ "\033[0m"
-                descrizione = facolta["Descrizione"].to_list()
-                output = output + str(descrizione[0])
-        """ 
            
         dispatcher.utter_message(text=output)            
         return [AllSlotsReset()]
