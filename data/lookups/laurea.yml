@@ -3,4 +3,6 @@ nlu:
     examples: |
       - triennale
       - magistrale
+      - magistrale a ciclo unico
+      - orientamento professionale
       

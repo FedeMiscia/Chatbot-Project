@@ -132,7 +132,7 @@ class ActionFindInfoAddresses(Action):
 
         if(len(facolta) == 0):
             output = "Il corso di laurea che hai inserito non esiste nella nostra università"
-        elif (laurea not in ["triennale", "magistrale"]):
+        elif (laurea not in ["triennale", "magistrale", "magistrale a ciclo unico", ""]):
             output = "Attenzione, hai inserito una tipologia di laurea che non esiste."
         elif (len(selected_facolta) == 0):
             output = "Non riesco a trovare un risultato, sei sicur* di aver scritto bene?" 
